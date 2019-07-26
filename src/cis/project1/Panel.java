@@ -494,7 +494,7 @@ public class Panel extends JPanel {
 				}
 			}
 			if ((trickButtons[numPlayers - 1] == event.getSource()) 
-					&& (selectedCard != null)) {
+					&& (selectedCard != null) && (model.getCurrentPlayer().equals(model.getUserPlayer()))) {
 				model.playCard(selectedCard);
 				selectedCard = null;
 				// System.out.println(model.getCurrentTrick());
@@ -515,6 +515,7 @@ public class Panel extends JPanel {
 	     * user's hand.
 	     *************************************************************/
 		private void checkCard(final int h) {
+			if (model.getCurrentPlayer().equals(model.getUserPlayer())) {
 			if ((model.getCurrentTrick().getLed().getSuit() 
 					== model.getUsersHand().get(h).
 					getSuit())
@@ -523,6 +524,7 @@ public class Panel extends JPanel {
 				selectedCard = model.getUsersHand().get(h);
 			}
 		}
+	}
 	}
 
 	
